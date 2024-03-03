@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Navbar from './layout/Navbar';
+import Dashboard from './dashboard/Dashboard';
+import CreateProject from './projects/CreateProjects';
+import ProjectDetail from './projects/ProjectDetail';
+import SignIn from './auth/SignIn';
+import Signup from './auth/Signup';
+import { thunk } from 'redux-thunk';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/project_detail" element={<ProjectDetail />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/createproject" element={<CreateProject/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
